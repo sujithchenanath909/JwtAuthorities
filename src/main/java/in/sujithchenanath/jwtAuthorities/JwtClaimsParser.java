@@ -1,8 +1,9 @@
 package in.sujithchenanath.jwtAuthorities;
 
-import java.awt.List;
+
 import java.util.Base64;
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -39,5 +40,9 @@ public class JwtClaimsParser {
 		return scopes.stream()
 				.map(scopeMap -> new SimpleGrantedAuthority(scopeMap.get("authority")))
 				.collect(Collectors.toList());
+	}
+	
+	public String getJwtSubject() {
+		return ((Claims)jwtObject.getBody()).getSubject();
 	}
 }
